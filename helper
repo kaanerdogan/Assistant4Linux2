@@ -1,0 +1,48 @@
+#!/bin/sh
+
+#echo "\n1-Check for reboot"
+#echo "2-View Xinput"
+#echo "3-Schedule for shutdown"
+#echo "4-Cancel shutdown process"
+#echo "5-Check for updates"
+#echo "6-Upgrade"
+#echo "7-Autoremove"
+#echo "8-Clear console"
+#echo "9-Exit"
+#echo "Please specify a number between (1-9)\n"
+PROG=${2}
+help() { 
+	echo "Assistant4Linux v2 By Isa Kaan Erdogan"
+	echo "Assistant4Linux v1: https://github.com/kaanerdogan/Assistant4Linux"
+	echo "Usage: helper [option]"
+	echo "Options: "
+	echo "	-h | --help "
+	echo "	update - Stands for 'sudo apt update'"
+	echo "	upgrade - Stands for 'sudo apt upgrade'"
+	echo "	-i ${command} | install - Stands for 'sudo apt install ${command}'"
+	echo "	aremove - Stands for 'sudo apt autoremove'"
+	echo "	shutdown - Stands for shutdown -c (shutdown is already easy code to write. Instead of writing (-c), helper sh[tab] might be easier way to emergency cancel)"
+}
+update() { sudo apt update ;}
+upgrade() { sudo apt upgrade ;}
+aptInstall() { sudo apt install ${PROG} ;}
+remove() { sudo apt autoremove ;}
+shutdown() {shutdown -c ;}
+if [ "$1" = "" ]; then
+	help
+else
+	case $1 in
+		-h | --help) help
+		;;
+		update) update
+		;;
+		upgrade) upgrade
+		;;
+		-i | install) aptInstall
+		;;
+		aremove) remove
+		;;
+		shutdown) shutdown
+		;;
+	esac
+fi
