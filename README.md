@@ -6,10 +6,14 @@ Add this file to your `~/.local/share/` folder if you don't have `~/.local/bin/`
 
 To add `~/.local/share` to your PATH add this
 
->export PATH="$PATH:$HOME/.local/share"
+```sh
+export PATH="$PATH:$HOME/.local/share"
+```
 
 to end of your `~/.bashrc` file if you don't have `~/.bash_profile`.
 
-Make sure this file is executable.
+Make sure this file is __executable__.
 
 Access available commands with `helper --help` or `helper -h`.
+
+*__Development in progress.__*
